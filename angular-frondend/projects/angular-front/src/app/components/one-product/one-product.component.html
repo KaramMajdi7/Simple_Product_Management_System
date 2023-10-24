@@ -1,0 +1,16 @@
+<ng-container *ngIf="product | async as pro">
+<div class="product-detail">
+    <div class="product-detail-header">
+      <h1 class="product-name">{{ pro.name }}</h1>
+      <p class="product-price">${{ pro.price }}</p>
+    </div>
+    <div class="product-description">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis in turpis sed volutpat. Vestibulum ac justo nec ex tempus rhoncus. Sed sed consectetur elit.
+        Maecenas id est vel est facilisis dictum. Proin eu bibendum nulla, eu hendrerit erat. Curabitur nec felis ultricies, euismod ex at, tincidunt sem.
+        In eget orci eu libero ullamcorper dignissim non at quam. Suspendisse at venenatis libero.
+        Integer nec libero eget elit bibendum consequat. Aliquam vitae justo nec lectus consequat bibendum.
+      </p>
+    </div>
+  </div>
+</ng-container>

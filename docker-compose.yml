@@ -1,0 +1,32 @@
+version: '3'
+services:
+  angular-frontend:
+    build:
+      context: ./angular-frondend
+    ports:
+      - "4200:80"
+    depends_on:
+      - nest-backend
+
+  nest-backend:
+    build:
+      context: ./nest-backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql-db
+    environment:
+      MYSQL_HOST: mysql-db
+      MYSQL_PORT: 3306
+      MYSQL_ROOT_PASSWORD: admin@2023
+      MYSQL_PASSWORD: admin@2023
+      MYSQL_DATABASE: nard-db
+
+  mysql-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: admin@2023
+      MYSQL_DATABASE: nard-db
+      MYSQL_PASSWORD: admin@2023
+    ports:
+      - "3307:3306"

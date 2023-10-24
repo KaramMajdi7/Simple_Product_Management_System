@@ -1,0 +1,225 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "angularFront": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/angular-front",
+      "sourceRoot": "projects/angular-front/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/angular-front",
+            "index": "projects/angular-front/src/index.html",
+            "main": "projects/angular-front/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/angular-front/tsconfig.app.json",
+            "assets": [
+              "projects/angular-front/src/favicon.ico",
+              "projects/angular-front/src/assets"
+            ],
+            "styles": [
+              "projects/angular-front/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "angularFront:build:production"
+            },
+            "development": {
+              "browserTarget": "angularFront:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angularFront:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/angular-front/tsconfig.spec.json",
+            "assets": [
+              "projects/angular-front/src/favicon.ico",
+              "projects/angular-front/src/assets"
+            ],
+            "styles": [
+              "projects/angular-front/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "backendNest": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/backend-nest",
+      "sourceRoot": "projects/backend-nest/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/backend-nest",
+            "index": "projects/backend-nest/src/index.html",
+            "main": "projects/backend-nest/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/backend-nest/tsconfig.app.json",
+            "assets": [
+              "projects/backend-nest/src/favicon.ico",
+              "projects/backend-nest/src/assets"
+            ],
+            "styles": [
+              "projects/backend-nest/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "backendNest:build:production"
+            },
+            "development": {
+              "browserTarget": "backendNest:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "backendNest:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/backend-nest/tsconfig.spec.json",
+            "assets": [
+              "projects/backend-nest/src/favicon.ico",
+              "projects/backend-nest/src/assets"
+            ],
+            "styles": [
+              "projects/backend-nest/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "integrate": {
+      "projectType": "library",
+      "root": "projects/integrate",
+      "sourceRoot": "projects/integrate/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/integrate/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/integrate/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/integrate/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/integrate/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "ecde9fed-cff6-49bf-bc34-6db2c022b778"
+  }
+}

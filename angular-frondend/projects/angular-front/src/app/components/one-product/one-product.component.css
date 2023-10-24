@@ -1,0 +1,31 @@
+/* Styling for the Product Detail Page */
+.product-detail {
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .product-name {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .product-price {
+    font-size: 20px;
+    color: #007bff;
+  }
+  
+  .product-description {
+    line-height: 1.6;
+  }
+  
+  
